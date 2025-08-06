@@ -153,10 +153,10 @@ This project covers many real-world topics like **AI, Databases, File Handling, 
 ## 👨‍💻 Author
 
 **Developed by:**
- -SAI SNEHANTH .C
- -MAHALAKSHMI .L
- -THENDRAL .A
- -MURALI KRISHNAA .K
+- SAI SNEHANTH .C
+- MAHALAKSHMI .L
+- THENDRAL .A
+- MURALI KRISHNAA .K
 
 
 ---
