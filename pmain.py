@@ -15,7 +15,7 @@ import mysql.connector
 app = Flask(_name_)
 app.secret_key = 'your_secret_key'
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"#PLEASE ENTER YOUR PYTESERACT PATH
 classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
 UPLOAD_FOLDER = "uploads"
@@ -41,7 +41,7 @@ def extract_text(file_path):
 
 def fetch_latest_email_attachment():
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
-    mail.login("hexaproject941@gmail.com", "yxuziwoghexefdzb")
+    mail.login("@gmail.com", "APP-PASSWORD")#PLEASE CHANGE YOUR G-MAIL AND APP PASSWORD
     mail.select("inbox")
 
     result, data = mail.search(None, "ALL")
@@ -105,8 +105,12 @@ def ensure_db_and_table(cursor):
         )
     """)
 
-def insert_to_db(entries, user, pwd):
-    conn = mysql.connector.connect(host="localhost", user=user, password=pwd)
+def insert_to_db(entries, user=None, pwd=None):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="",     # e.g., "root"
+        password=""  # e.g., "admin123"
+    )
     cursor = conn.cursor()
     ensure_db_and_table(cursor)
     cursor.execute(f"USE {DB_NAME}")
@@ -492,14 +496,14 @@ Time: {row['Upload Time']}
 import smtplib
 from email.message import EmailMessage
 
-EMAIL_ADDRESS = 'hexaproject941@gmail.com'
-EMAIL_PASSWORD = 'yxuziwoghexefdzb'
+EMAIL_ADDRESS = '@gmail.com'#YOUR G-MAIL
+EMAIL_PASSWORD = ''#YOUR G-MAIL APP PAASWORD
 
 def send_email(summary):
     msg = EmailMessage()
     msg['Subject'] = 'Document Classification Summary'
     msg['From'] = EMAIL_ADDRESS
-    msg['To'] = '2022peccb257@gmail.com'
+    msg['To'] = '@gmail.com'#YOUR G-MAIL
     msg.set_content(summary)
 
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
